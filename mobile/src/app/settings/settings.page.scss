@@ -1,0 +1,9 @@
+$primary:    #488aff;
+
+ion-content ion-toolbar {
+  --background: translucent;
+}
+
+ion-card.cards-list ion-card-header {
+  color: $primary;
+}

@@ -2,18 +2,19 @@ import { IonicModule } from '@ionic/angular';
 import { RouterModule } from '@angular/router';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
-import { Tab2Page } from './tab2.page';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { DetailsPage } from './details.page';
 import { ExploreContainerComponentModule } from '../explore-container/explore-container.module';
 
 @NgModule({
   imports: [
     IonicModule,
     CommonModule,
-    FormsModule,
+    FormsModule,  
+    ReactiveFormsModule,
     ExploreContainerComponentModule,
-    RouterModule.forChild([{ path: '', component: Tab2Page }])
+    RouterModule.forChild([{ path: '', component: DetailsPage }])
   ],
-  declarations: [Tab2Page]
+  declarations: [DetailsPage]
 })
-export class Tab2PageModule {}
+export class DetailsPageModule {}

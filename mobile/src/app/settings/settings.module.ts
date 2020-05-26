@@ -2,18 +2,20 @@ import { IonicModule } from '@ionic/angular';
 import { RouterModule } from '@angular/router';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
-import { Tab3Page } from './tab3.page';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { SettingsPage } from './settings.page';
 import { ExploreContainerComponentModule } from '../explore-container/explore-container.module';
+import { BrowserModule } from '@angular/platform-browser';
 
 @NgModule({
   imports: [
     IonicModule,
     CommonModule,
-    FormsModule,
+    FormsModule,  
+    ReactiveFormsModule,
     ExploreContainerComponentModule,
-    RouterModule.forChild([{ path: '', component: Tab3Page }])
+    RouterModule.forChild([{ path: '', component: SettingsPage }])
   ],
-  declarations: [Tab3Page]
+  declarations: [SettingsPage]
 })
-export class Tab3PageModule {}
+export class SettingsPageModule {}
