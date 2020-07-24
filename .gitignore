@@ -21,3 +21,7 @@ mobile/node_modules/
 
 client/package-lock.json
 client/package.json
+
+server/source/.vs/HRSolution/DesignTimeBuild/.dtbcache.v2
+
+server/source/.vs/HRSolution/v16/.suo
