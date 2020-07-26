@@ -10,6 +10,7 @@ using HRSolution.Infrastructure.Extension;
 using HRSolution.Service;
 using HRSolution.Data;
 using Microsoft.EntityFrameworkCore;
+using FluentMigrator.Runner;
 
 namespace HRSolution.Server
 {

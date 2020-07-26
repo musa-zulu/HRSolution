@@ -8,6 +8,7 @@ namespace HRSolution.Data.Models
         public Guid PersonId { get; set; }      
         public string Gender { get; set; }
         public string Nationality { get; set; }
+        public bool ForeignNational { get; set; }
         public DateTime BirthDate { get; set; }
         public Guid EmployeeDetailsId { get; set; }
         public Guid LanguageId { get; set; }
