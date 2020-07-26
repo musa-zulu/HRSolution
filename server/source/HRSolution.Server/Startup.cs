@@ -1,14 +1,15 @@
-using AutoMapper;
-using HRSolution.Data;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using System;
+using Microsoft.Extensions.Logging;
+using Serilog;
 using System.IO;
-using SwaggerOptions = HRSolution.Server.Options.SwaggerOptions;
+using HRSolution.Infrastructure.Extension;
+using HRSolution.Service;
+using HRSolution.Data;
+using Microsoft.EntityFrameworkCore;
 
 namespace HRSolution.Server
 {
@@ -49,7 +50,7 @@ namespace HRSolution.Server
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, ILoggerFactory log)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, ILoggerFactory log, IMigrationRunner migrationRunner)
         {
             if (env.IsDevelopment())
             {
@@ -68,10 +69,21 @@ namespace HRSolution.Server
 
             log.AddSerilog();
 
+            InitializeDatabase(app, migrationRunner);
+
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
             });
+        }
+
+        private void InitializeDatabase(IApplicationBuilder app, IMigrationRunner migrationRunner)
+        {
+            using (var scope = app.ApplicationServices.GetService<IServiceScopeFactory>().CreateScope())
+            {
+                scope.ServiceProvider.GetRequiredService<ApplicationDbContext>().Database.Migrate();
+            }
+            migrationRunner.MigrateUp();
         }
     }
 }

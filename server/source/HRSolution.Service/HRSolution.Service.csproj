@@ -5,11 +5,11 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="AutoMapper" Version="10.0.0" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="3.1.6" />
+    <PackageReference Include="MediatR.Extensions.Microsoft.DependencyInjection" Version="8.0.1" />
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\HRSolution.Data\HRSolution.Data.csproj" />
     <ProjectReference Include="..\HRSolution.Models\HRSolution.Models.csproj" />
   </ItemGroup>
 
