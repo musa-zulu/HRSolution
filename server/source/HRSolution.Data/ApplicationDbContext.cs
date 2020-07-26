@@ -35,7 +35,7 @@ namespace HRSolution.Data
         public DbSet<Race> Races { get; }
         public DbSet<Attachment> Attachments { get; set; }
         public DbSet<Leave> Leaves { get; set; }
-        public DbSet<Person> People { get; set; }
+        public DbSet<Person> People { get; set; } //TODO: config on model startup setup for db not to rename this 
         public DbSet<Address> Addresses { get; set; }
         public DbSet<Language> Languages { get;  }
         public DbSet<Province> Provinces { get; }
