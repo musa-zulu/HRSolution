@@ -7,7 +7,7 @@ namespace HRSolution.Data
     public interface IApplicationDbContext
     {
         public DbSet<Race> Races { get; }
-        public DbSet<Attachment> Photos { get; set; }
+        public DbSet<Attachment> Attachments { get; set; }
         public DbSet<Leave> Leaves { get; set; }
         public DbSet<Person> People { get; set; }
         public DbSet<Status> Statuses { get; set; }
@@ -33,7 +33,7 @@ namespace HRSolution.Data
 
         public DbSet<Status> Statuses { get; set; }
         public DbSet<Race> Races { get; }
-        public DbSet<Attachment> Photos { get; set; }
+        public DbSet<Attachment> Attachments { get; set; }
         public DbSet<Leave> Leaves { get; set; }
         public DbSet<Person> People { get; set; }
         public DbSet<Address> Addresses { get; set; }
