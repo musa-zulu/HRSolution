@@ -15,7 +15,7 @@ namespace HRSolution.Data.Models
         public Guid CitizenshipId { get; set; }
         public Guid DisabledTypeId { get; set; }
         public Guid MaritialStatusId { get; set; }
-        public Guid PhotoId { get; set; }
+        public Guid AttachmentId { get; set; }
         public Guid ContactDetailsId { get; set; }
         public List<Guid> AddressIds { get; set; }
     }

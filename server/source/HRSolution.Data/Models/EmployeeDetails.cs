@@ -2,7 +2,7 @@
 
 namespace HRSolution.Data.Models
 {
-    public class EmployeeDetails
+    public class EmployeeDetails : BaseEntity
     {
         public Guid EmployeeDetailsId { get; set; }
         public string FirstName { get; set; }
