@@ -25,17 +25,7 @@ import { animate, AUTO_STYLE, state, style, transition, trigger } from '@angular
       transition('collapsed <=> expanded', [
         animate('400ms ease-in-out')
       ])
-    ]),
-    trigger('cardRemove', [
-      state('open', style({
-        opacity: 1
-      })),
-      state('closed', style({
-        opacity: 0,
-        display: 'none'
-      })),
-      transition('open <=> closed', animate('400ms')),
-    ])
+    ])    
   ]
 })
 
@@ -63,7 +53,6 @@ export class CardComponent implements OnInit {
 
   public loadCard: boolean;
 
-  public cardRemove: string;
 
   constructor(config: NgbDropdownConfig) { /* animationService: AnimationService,  */
     config.placement = 'bottom-right';
@@ -83,8 +72,6 @@ export class CardComponent implements OnInit {
     this.collapsedIcon = 'icon-minus';
 
     this.loadCard = false;
-
-    this.cardRemove = 'open';
   }
 
   ngOnInit() {
@@ -141,10 +128,6 @@ export class CardComponent implements OnInit {
       this.loadCard = false;
       this.cardClass = 'expanded';
     }, 3000);
-  }
-
-  cardRemoveAction() {
-    this.cardRemove = this.cardRemove === 'closed' ? 'open' : 'closed';
   }
 
 }

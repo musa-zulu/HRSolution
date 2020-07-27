@@ -1,0 +1,165 @@
+<div class="row">
+  <!-- Leave count card start -->
+  <div class="col-md-12 col-xl-4">
+    <app-card [hidHeader]="true" cardClass="flat-card" blockClass="p-0">
+      <div class="row-table">
+        <div class="col-sm-6 card-body br">
+          <div class="row">
+            <div class="col-sm-4">
+              <i class="icon feather icon-eye text-c-green mb-1 d-block"></i>
+            </div>
+            <div class="col-sm-8 text-md-center">
+              <h5>1.25</h5>
+              <span>Annual Leave Balance</span>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-6 card-body">
+          <div class="row">
+            <div class="col-sm-4">
+              <i class="icon feather icon-music text-c-red mb-1 d-block"></i>
+            </div>
+            <div class="col-sm-8 text-md-center">
+              <h5>1</h5>
+              <span>Time sheet overdue</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row-table">
+        <div class="col-sm-6 card-body br">
+          <div class="row">
+            <div class="col-sm-4">
+              <i class="icon feather icon-file-text text-c-blue mb-1 d-block"></i>
+            </div>
+            <div class="col-sm-8 text-md-center">
+              <h5>25</h5>
+              <span>Sick Leave Balance</span>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-6 card-body">
+          <div class="row">
+            <div class="col-sm-4">
+              <i class="icon feather icon-mail text-c-yellow mb-1 d-block"></i>
+            </div>
+            <div class="col-sm-8 text-md-center">
+              <h5>2</h5>
+              <span>Family Responsibility Balance</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </app-card>
+  </div>
+    <!-- Leave Count end -->
+
+  <!-- Leave History start -->
+  <div class="col-xl-6 col-md-12">
+    <app-card cardTitle="Leave History" cardClass="table-card" blockClass="p-0">
+      <div class="table-responsive">
+        <table class="table table-hover mb-0">
+          <thead>
+          <tr>
+            <th>
+              <div class="chk-option">
+                <label class="check-task custom-control custom-checkbox d-flex justify-content-center done-task">
+                  <input type="checkbox" class="custom-control-input">
+                  <span class="custom-control-label"></span>
+                </label>
+              </div>
+              Assigned
+            </th>
+            <th>Name</th>
+            <th>Due Date</th>
+            <th class="text-right">Priority</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr>
+            <td>
+              <div class="chk-option">
+                <label class="check-task custom-control custom-checkbox d-flex justify-content-center done-task">
+                  <input type="checkbox" class="custom-control-input">
+                  <span class="custom-control-label"></span>
+                </label>
+              </div>
+              <div class="d-inline-block align-middle">
+                <img src="assets/images/user/avatar-4.jpg" alt="user image" class="img-radius wid-40 align-top m-r-15">
+                <div class="d-inline-block">
+                  <h6>John Deo</h6>
+                  <p class="text-muted m-b-0">Graphics Designer</p>
+                </div>
+              </div>
+            </td>
+            <td>Flat Able</td>
+            <td>Jun, 26</td>
+            <td class="text-right"><label class="badge badge-light-danger">Low</label></td>
+          </tr>
+          <tr>
+            <td>
+              <div class="chk-option">
+                <label class="check-task custom-control custom-checkbox d-flex justify-content-center done-task">
+                  <input type="checkbox" class="custom-control-input">
+                  <span class="custom-control-label"></span>
+                </label>
+              </div>
+              <div class="d-inline-block align-middle">
+                <img src="assets/images/user/avatar-2.jpg" alt="user image" class="img-radius wid-40 align-top m-r-15">
+                <div class="d-inline-block">
+                  <h6>Jenifer Vintage</h6>
+                  <p class="text-muted m-b-0">Web Designer</p>
+                </div>
+              </div>
+            </td>
+            <td>Mashable</td>
+            <td>March, 31</td>
+            <td class="text-right"><label class="badge badge-light-primary">high</label></td>
+          </tr>
+          <tr>
+            <td>
+              <div class="chk-option">
+                <label class="check-task custom-control custom-checkbox d-flex justify-content-center done-task">
+                  <input type="checkbox" class="custom-control-input">
+                  <span class="custom-control-label"></span>
+                </label>
+              </div>
+              <div class="d-inline-block align-middle">
+                <img src="assets/images/user/avatar-3.jpg" alt="user image" class="img-radius wid-40 align-top m-r-15">
+                <div class="d-inline-block">
+                  <h6>William Jem</h6>
+                  <p class="text-muted m-b-0">Developer</p>
+                </div>
+              </div>
+            </td>
+            <td>Flatable</td>
+            <td>Aug, 02</td>
+            <td class="text-right"><label class="badge badge-light-success">medium</label></td>
+          </tr>
+          <tr>
+            <td>
+              <div class="chk-option">
+                <label class="check-task custom-control custom-checkbox d-flex justify-content-center done-task">
+                  <input type="checkbox" class="custom-control-input">
+                  <span class="custom-control-label"></span>
+                </label>
+              </div>
+              <div class="d-inline-block align-middle">
+                <img src="assets/images/user/avatar-2.jpg" alt="user image" class="img-radius wid-40 align-top m-r-15">
+                <div class="d-inline-block">
+                  <h6>David Jones</h6>
+                  <p class="text-muted m-b-0">Developer</p>
+                </div>
+              </div>
+            </td>
+            <td>Guruable</td>
+            <td>Sep, 22</td>
+            <td class="text-right"><label class="badge badge-light-primary">high</label></td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+    </app-card>
+  </div>
+  <!-- Leave History start end -->
+</div>
