@@ -2,9 +2,9 @@
 
 namespace HRSolution.Data.Models
 {
-    public class Race
+    public class MaritialStatus : BaseEntity
     {
-        public Guid RaceId { get; set; }
+        public Guid MaritialStatusId { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
     }

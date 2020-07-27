@@ -11,6 +11,7 @@ using HRSolution.Service;
 using HRSolution.Data;
 using Microsoft.EntityFrameworkCore;
 using FluentMigrator.Runner;
+using Microsoft.EntityFrameworkCore.Migrations.Operations;
 
 namespace HRSolution.Server
 {
@@ -37,7 +38,7 @@ namespace HRSolution.Server
 
             services.AddAutoMapper();
 
-            services.AddAddScopedServices();
+            services.AddScopedServices();
 
             services.AddTransientServices();
 
@@ -48,6 +49,10 @@ namespace HRSolution.Server
             services.AddMediatorCQRS();
 
             services.AddVersion();
+
+            services.AddFluentMigratorCore().ConfigureRunner(builder => builder.AddSqlServer()
+                                            .WithGlobalConnectionString(Configuration.GetConnectionString("HrSolutionConn"))
+                                            .ScanIn(typeof(CreateTableOperation).Assembly).For.Migrations());
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

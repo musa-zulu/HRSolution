@@ -10,8 +10,10 @@ namespace HRSolution.Data.Models
         public string Type { get; set; }
         public DateTime StartDate { get; set; }
         public DateTime EndTime { get; set; }
-        public Status Status { get; set; } 
         public int NoOfDays { get; set; }
-        public Guid AttachmentId { get; set; } 
+        public Guid StatusId { get; set; }
+        public Status Status { get; set; }
+        public Guid AttachmentId { get; set; }
+        public virtual Attachment Attachment { get; set; }
     }
 }

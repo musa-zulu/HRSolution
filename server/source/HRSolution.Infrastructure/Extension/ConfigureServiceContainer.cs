@@ -10,6 +10,7 @@ using System.Reflection;
 using HRSolution.Service.Interfaces;
 using HRSolution.Service.Implementation;
 using HRSolution.Data.Requests;
+using Microsoft.AspNetCore.Hosting;
 
 namespace HRSolution.Infrastructure.Extension
 {
@@ -33,7 +34,7 @@ namespace HRSolution.Infrastructure.Extension
             serviceCollection.AddSingleton(mapper);
         }
 
-        public static void AddAddScopedServices(this IServiceCollection serviceCollection)
+        public static void AddScopedServices(this IServiceCollection serviceCollection)
         {
             serviceCollection.AddScoped<IApplicationDbContext>(provider => provider.GetService<ApplicationDbContext>());
         }

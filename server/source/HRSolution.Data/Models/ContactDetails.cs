@@ -11,6 +11,6 @@ namespace HRSolution.Data.Models
         public long WorkExtension { get; set; }
         public long CellphoneNumber { get; set; }
         public string EmailAddress { get; set; }
-        public List<Guid> EmergencyContactDetailsIds { get; set; }
+        public virtual List<EmergencyContactDetails> EmergencyContactDetails { get; set; }
     }
 }

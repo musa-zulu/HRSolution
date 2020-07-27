@@ -10,9 +10,9 @@
   "$schema": "http://json.schemastore.org/launchsettings.json",
   "profiles": {
     "HRSolution.Server": {
-      "commandName": "Project",
+      "commandName": "IISExpress",
       "launchBrowser": true,
-      "launchUrl": "swagger",
+      "launchUrl": "OpenAPI/index.html",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       },

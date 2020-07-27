@@ -8,6 +8,6 @@ namespace HRSolution.Data.Models
         public Guid EmergencyContactDetailsId { get; set; }
         public string EmergencyContactName { get; set; }
         public long EmergencyContactNumber { get; set; }
-        public List<Guid> AddressIds { get; set; }
+        public virtual List<Address> Addresses { get; set; }
     }
 }

@@ -16,5 +16,6 @@ namespace HRSolution.Data.Models
         public string Country { get; set; }
         public bool IsPhysicalAddressSameAsPostal { get; set; }
         public Guid ProvinceId { get; set; }
+        public virtual Province Province { get; set; }
     }
 }
