@@ -99,7 +99,7 @@ namespace HRSolution.Service.Implementation
             await _context.SaveChangesAsync();
             return new ServiceResult<Guid>
             {
-                Data = personDto.PersonId
+                Data = employee.PersonId
             };
         }
     }

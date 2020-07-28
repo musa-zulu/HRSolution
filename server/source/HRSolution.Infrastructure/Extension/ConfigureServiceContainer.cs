@@ -37,6 +37,9 @@ namespace HRSolution.Infrastructure.Extension
         public static void AddScopedServices(this IServiceCollection serviceCollection)
         {
             serviceCollection.AddScoped<IApplicationDbContext>(provider => provider.GetService<ApplicationDbContext>());
+
+            serviceCollection.AddScoped<IEmployeeService, EmployeeService>();
+            serviceCollection.AddScoped<ILeaveService, LeaveService>();
         }
 
         public static void AddTransientServices(this IServiceCollection serviceCollection)

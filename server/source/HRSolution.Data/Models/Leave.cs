@@ -9,7 +9,7 @@ namespace HRSolution.Data.Models
         public string Reference { get; set; }
         public string Type { get; set; }
         public DateTime StartDate { get; set; }
-        public DateTime EndTime { get; set; }
+        public DateTime EndDate { get; set; }
         public int NoOfDays { get; set; }
         public Guid StatusId { get; set; }
         public Status Status { get; set; }
