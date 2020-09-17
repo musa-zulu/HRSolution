@@ -3,6 +3,7 @@ using HRSolution.Data;
 using HRSolution.Data.Models;
 using HRSolution.Models;
 using HRSolution.Models.DTOs;
+using HRSolution.Service.Helpers;
 using HRSolution.Service.Interfaces;
 using HRSolution.Service.Models;
 using Microsoft.EntityFrameworkCore;
@@ -13,19 +14,18 @@ using System.Threading.Tasks;
 
 namespace HRSolution.Service.Implementation
 {
-    public class LeaveService : ILeaveService
+    public class LeaveService : BaseHrSolutionService, ILeaveService
     {
         private readonly IApplicationDbContext _context;
         private readonly IMapper _mapper;
-        private readonly IPaginator<Leave> _paginator;
+        private readonly Paginator<Leave> _paginator;
 
         public LeaveService(IApplicationDbContext context,
-            IMapper mapper,
-            IPaginator<Leave> paginator)
+            IMapper mapper)
         {
             _context = context;
             _mapper = mapper;
-            _paginator = paginator;
+            _paginator = new Paginator<Leave>();
         }
 
         public async Task<ServiceResult<Guid>> Add(LeaveDto leaveDto)
@@ -42,28 +42,34 @@ namespace HRSolution.Service.Implementation
         public async Task<PagedServiceResult<LeaveDto>> GetAll(int page, int perPage)
         {
             var leaves = _context.Leaves;
-
-            var pageOfLeaves = await _paginator
-                .BuildPageResult(leaves, page, perPage, b => b.LeaveId)
-                .ToListAsync();
-
-            var paginatedLeaves = _mapper.Map<List<LeaveDto>>(pageOfLeaves);
-
-            var paginationResult = new PaginationResult<LeaveDto>
+            try
             {
-                Results = paginatedLeaves,
-                PerPage = perPage,
-                PageNumber = page
-            };
+                var pageOfLeaves = await _paginator
+                    .BuildPageResult(leaves, page, perPage, b => b.LeaveId)
+                    .ToListAsync();
 
-            return new PagedServiceResult<LeaveDto>
+                var paginatedLeaves = _mapper.Map<List<LeaveDto>>(pageOfLeaves);
+
+                var paginationResult = new PaginationResult<LeaveDto>
+                {
+                    Results = paginatedLeaves,
+                    PerPage = perPage,
+                    PageNumber = page
+                };
+
+                return new PagedServiceResult<LeaveDto>
+                {
+                    Data = paginationResult,
+                    Error = null
+                };
+            }
+            catch (Exception ex)
             {
-                Data = paginationResult,
-                Error = null
-            };
+                return HandleDatabaseCollectionError<LeaveDto>(ex);
+            }
         }
 
-        public async Task<PagedServiceResult<LeaveDto>> GetByDateRange(DateTime startDate, DateTime endDate, int page,int perPage)
+        public async Task<PagedServiceResult<LeaveDto>> GetByDateRange(DateTime startDate, DateTime endDate, int page, int perPage)
         {
             var leaves = _context.Leaves.Where(s => s.StartDate == startDate && s.EndDate == endDate);
 

@@ -3,6 +3,7 @@ using HRSolution.Data;
 using HRSolution.Data.Models;
 using HRSolution.Models;
 using HRSolution.Models.DTOs;
+using HRSolution.Service.Helpers;
 using HRSolution.Service.Interfaces;
 using HRSolution.Service.Models;
 using Microsoft.EntityFrameworkCore;
@@ -12,20 +13,19 @@ using System.Threading.Tasks;
 
 namespace HRSolution.Service.Implementation
 {
-    public class EmployeeService : IEmployeeService
+    public class EmployeeService : BaseHrSolutionService, IEmployeeService
     {
         private readonly IApplicationDbContext _context;
         private readonly IMapper _mapper;
-        private readonly IPaginator<Person> _employeesPaginator;
+        private readonly Paginator<Person> _paginator;
 
         public EmployeeService(
             IApplicationDbContext context,
-            IMapper mapper,
-            IPaginator<Person> paginator)
+            IMapper mapper)
         {
             _context = context;
             _mapper = mapper;
-            _employeesPaginator = paginator;
+            _paginator = new Paginator<Person>();
         }
 
         public async Task<ServiceResult<Guid>> Add(PersonDto newPerson)
@@ -42,25 +42,31 @@ namespace HRSolution.Service.Implementation
         public async Task<PagedServiceResult<PersonDto>> GetAll(int page, int perPage)
         {
             var employees = _context.People;
-
-            var pageOfEmployees = await _employeesPaginator
-                .BuildPageResult(employees, page, perPage, b => b.PersonId)
-                .ToListAsync();
-
-            var paginatedEmployees = _mapper.Map<List<PersonDto>>(pageOfEmployees);
-
-            var paginationResult = new PaginationResult<PersonDto>
+            try
             {
-                Results = paginatedEmployees,
-                PerPage = perPage,
-                PageNumber = page
-            };
+                var pageOfEmployees = await _paginator
+               .BuildPageResult(employees, page, perPage, b => b.PersonId)
+               .ToListAsync();
 
-            return new PagedServiceResult<PersonDto>
+                var paginatedEmployees = _mapper.Map<List<PersonDto>>(pageOfEmployees);
+
+                var paginationResult = new PaginationResult<PersonDto>
+                {
+                    Results = paginatedEmployees,
+                    PerPage = perPage,
+                    PageNumber = page
+                };
+
+                return new PagedServiceResult<PersonDto>
+                {
+                    Data = paginationResult,
+                    Error = null
+                };
+            }
+            catch (Exception ex)
             {
-                Data = paginationResult,
-                Error = null
-            };
+                return HandleDatabaseCollectionError<PersonDto>(ex);
+            }
         }
 
         public async Task<ServiceResult<PersonDto>> GetById(Guid personId)
