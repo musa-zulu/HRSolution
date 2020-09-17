@@ -6,7 +6,6 @@
 
   <ItemGroup>
     <Folder Include="bin\Debug\netcoreapp3.1\" />
-    <Folder Include="Controllers\" />
     <Folder Include="Filters\" />
   </ItemGroup>
 
