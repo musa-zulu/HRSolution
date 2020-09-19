@@ -5,12 +5,17 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="FluentValidation" Version="9.2.0" />
     <PackageReference Include="MediatR.Extensions.Microsoft.DependencyInjection" Version="8.0.1" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\HRSolution.Data\HRSolution.Data.csproj" />
     <ProjectReference Include="..\HRSolution.Models\HRSolution.Models.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Features\EmployeeFeatures\Queries\" />
   </ItemGroup>
 
 </Project>
